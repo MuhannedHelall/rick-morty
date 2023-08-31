@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import { Link, useParams } from "react-router-dom";
-import CardDetails from "./../components/CardDetails";
-import Feature from "../components/Feature";
 import ICharacter from "../utils/data/character.interface";
+import Loader from "../components/Loader";
+import { delayForDemo } from "./Main";
 
 function Details() {
     const { id } = useParams();
@@ -32,15 +32,21 @@ function Details() {
             .then((res) => setCharacter(res));
     }, [id]);
 
+    const CardDetails = lazy(() =>
+        delayForDemo(import("../components/CardDetails"))
+    );
+    const Feature = lazy(() => delayForDemo(import("../components/Feature")));
     return (
         <>
             <Link to={"/"} className="text-sky-500 hover:text-sky-600 px-5">
                 {"<<"} Go Back
             </Link>
-            <div className="w-6/12 mx-auto grid grid-cols-5 gap-x-5 py-10 h-stretch">
-                <CardDetails character={character} />
-                <Feature episodes={character.episode} />
-            </div>
+            <Suspense fallback={<Loader />}>
+                <div className="w-10/12 md:w-8/12 xl:w-6/12 mx-auto lg:grid lg:grid-cols-5 lg:gap-x-5 py-10 px-5 h-full">
+                    <CardDetails character={character} />
+                    <Feature episodes={character.episode} />
+                </div>
+            </Suspense>
         </>
     );
 }

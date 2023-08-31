@@ -7,11 +7,15 @@ import { BsArrowRight, BsGenderFemale, BsGenderMale } from "react-icons/bs";
 function Card({ character }: { character: ICharacter }) {
     return (
         <div className="border border-slate-300 rounded-lg shadow-md">
-            <img src={character.image} alt="Character" className="w-screen rounded-t-lg" />
+            <img
+                src={character.image}
+                alt="Character"
+                className="w-screen rounded-t-lg"
+            />
             <div className="px-5 py-3">
                 <h2 className="font-bold text-lg">
-                    {character.name.length > 17
-                        ? character.name.slice(0, 17).concat(" .....")
+                    {character.name.length > 15
+                        ? character.name.slice(0, 15).concat(" ...")
                         : character.name}
                 </h2>
                 <h4 className="font-bold text-sm py-1 text-sky-500 uppercase">
@@ -19,8 +23,8 @@ function Card({ character }: { character: ICharacter }) {
                 </h4>
                 <h5 className="text-xs pb-2 text-sky-500 uppercase">
                     {character.type
-                        ? character.type.length > 25
-                            ? character.type.slice(0, 25).concat(" .....")
+                        ? character.type.length > 15
+                            ? character.type.slice(0, 15).concat(" ...")
                             : character.type
                         : "No Type"}
                 </h5>
@@ -55,8 +59,8 @@ function Card({ character }: { character: ICharacter }) {
                 </h4>
                 <h4 className="text-sm py-2 mb-3 flex items-center">
                     <CiLocationOn className="me-2 text-xl" />
-                    {character.location.name.length > 20
-                        ? character.location.name.slice(0, 20).concat(" .....")
+                    {character.location.name.length > 15
+                        ? character.location.name.slice(0, 15).concat(" ...")
                         : character.location.name}
                 </h4>
                 <Link

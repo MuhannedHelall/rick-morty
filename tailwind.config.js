@@ -4,8 +4,7 @@ module.exports = {
     theme: {
         extend: {
             height: {
-                card: "34rem",
-                stretch: "85.98484vh"
+                card: "34.7rem",
             },
             fontFamily: {
                 poppins: ["Poppins", "sans-serif"],

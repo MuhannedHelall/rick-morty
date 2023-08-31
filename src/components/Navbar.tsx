@@ -12,23 +12,27 @@ function Navbar() {
 
     return (
         <nav
-            className={`sticky top-0 ${
+            className={`md:sticky md:top-0 ${
                 isDark ? "bg-slate-700" : "bg-white"
-            } flex items-center justify-around h-20 shadow-md`}
+            } md:flex md:items-center md:justify-around md:h-20 md:shadow-md py-5`}
         >
-            <button className="text-3xl">
-                <FaGithub />
+            <button className="text-3xl w-full md:w-fit">
+                <FaGithub className="mx-auto" />
             </button>
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center py-5">
                 <img src={rickNav} alt="rick-nav" className="me-3 w-8 h-10" />
-                <span className="font-bold text-xl">Rick & Morty Wiki</span>
+                <span className="font-bold md:text-xl text-2xl py-2">Rick & Morty</span>
                 <img src={mortyNav} alt="morty-nav" className="ml-3 w-8 h-8" />
             </div>
             <button
-                className="text-3xl"
+                className="text-3xl w-full md:w-fit"
                 onClick={() => dispatch(ToggleDarkMode())}
             >
-                {isDark ? <MdSunny /> : <MdDarkMode />}
+                {isDark ? (
+                    <MdSunny className="mx-auto" />
+                ) : (
+                    <MdDarkMode className="mx-auto" />
+                )}
             </button>
         </nav>
     );

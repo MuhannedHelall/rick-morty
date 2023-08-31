@@ -33,23 +33,25 @@ function Pagination({ info, handleEndPoint }: IProps) {
     };
 
     return (
-        <div className="pb-5 flex justify-center text-black">
-            <button
-                className="border p-2 bg-gray-200 hover:bg-gray-300 text-sm rounded-xl"
-                onClick={handlePrevClick}
-            >
-                <BsArrowLeft />
-            </button>
-            <span className="mx-2 border p-2 bg-gray-200 text-sm rounded-xl">
-                {getPageNumber(info.prev) + 1}/{info.pages}
-            </span>
-            <button
-                className="border p-2 bg-gray-200 hover:bg-gray-300 text-sm rounded-xl"
-                onClick={handleNextClick}
-            >
-                <BsArrowRight />
-            </button>
-        </div>
+        <>
+            <div className="flex justify-center text-black pb-5">
+                <button
+                    className="border p-2 bg-gray-200 hover:bg-gray-300 text-sm rounded-xl"
+                    onClick={handlePrevClick}
+                >
+                    <BsArrowLeft />
+                </button>
+                <span className="mx-2 border p-2 bg-gray-200 text-sm rounded-xl">
+                    {getPageNumber(info.prev) + 1}/{info.pages}
+                </span>
+                <button
+                    className="border p-2 bg-gray-200 hover:bg-gray-300 text-sm rounded-xl"
+                    onClick={handleNextClick}
+                >
+                    <BsArrowRight />
+                </button>
+            </div>
+        </>
     );
 }
 

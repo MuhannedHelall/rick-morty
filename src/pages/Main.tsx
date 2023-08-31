@@ -1,10 +1,22 @@
-import React, { SyntheticEvent, useEffect, useState } from "react";
+import React, {
+    SyntheticEvent,
+    useEffect,
+    useState,
+    lazy,
+    Suspense,
+} from "react";
 import Filters from "../components/Filters";
 import Pagination from "../components/Pagination";
-import Content from "../components/Content";
 import IApi from "../utils/data/api.interface";
 import IFilter from "../utils/data/filter.interface";
+import Info from "../components/Info";
+import Loader from "../components/Loader";
 
+export function delayForDemo(promise: any) {
+    return new Promise((resolve) => {
+        setTimeout(resolve, 1000);
+    }).then(() => promise);
+}
 function Main() {
     const [api, setApi] = useState<IApi>({
         info: {
@@ -35,12 +47,16 @@ function Main() {
         );
     }
 
+    const Content = lazy(() => delayForDemo(import("../components/Content")));
     return (
-        <div className="mx-20">
+        <div className="mx-14">
             <Filters filter={filter} />
-            <Pagination info={api.info} handleEndPoint={handleEndPoint} />
-            <Content characters={api.results} />
-            <Pagination info={api.info} handleEndPoint={handleEndPoint} />
+            <Suspense fallback={<Loader />}>
+                <Pagination info={api.info} handleEndPoint={handleEndPoint} />
+                <Info info={api.info} />
+                <Content characters={api.results} />
+                <Pagination info={api.info} handleEndPoint={handleEndPoint} />
+            </Suspense>
         </div>
     );
 }

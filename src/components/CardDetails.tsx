@@ -11,7 +11,7 @@ import ICharacter from "../utils/data/character.interface";
 
 function CardDetails({ character }: { character: ICharacter }) {
     return (
-        <div className="col-span-3 border rounded-md shadow-md p-5 h-card">
+        <div className="col-span-3 border rounded shadow-md p-5 h-fit mb-3">
             <div className="text-center border-b py-2">
                 <img
                     src={character.image}

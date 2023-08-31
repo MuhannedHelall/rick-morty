@@ -6,7 +6,6 @@ interface ModeState {
     isDark: Boolean;
 }
 let mode = localStorage.getItem("mode") === "true";
-console.log(mode);
 
 // Define the initial state using that type
 const initialState: ModeState = {
