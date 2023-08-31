@@ -30,7 +30,7 @@ function Details() {
         fetch(`https://rickandmortyapi.com/api/character/${id}`)
             .then((data) => data.json())
             .then((res) => setCharacter(res));
-    }, []);
+    }, [id]);
 
     return (
         <>

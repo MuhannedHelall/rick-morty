@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import Navbar from "./components/Navbar";
 import { Outlet } from "react-router-dom";
+import { useAppSelector } from "./redux/hooks";
 
 function App() {
-    const [isDark, setDark] = useState<Boolean>(true);
-    function ToggleDarkMode() {
-        setDark((prev) => !prev);
-    }
+    const { isDark } = useAppSelector((state) => state.Mode);
+
     return (
         <div className={`font-poppins ${isDark && "bg-slate-700 text-white"}`}>
-            <Navbar isDark={isDark} ToggleDarkMode={ToggleDarkMode} />
+            <Navbar />
             <Outlet />
         </div>
     );

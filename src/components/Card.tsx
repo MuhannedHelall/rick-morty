@@ -7,7 +7,7 @@ import { BsArrowRight, BsGenderFemale, BsGenderMale } from "react-icons/bs";
 function Card({ character }: { character: ICharacter }) {
     return (
         <div className="border border-slate-300 rounded-lg shadow-md">
-            <img src={character.image} className="w-screen rounded-t-lg" />
+            <img src={character.image} alt="Character" className="w-screen rounded-t-lg" />
             <div className="px-5 py-3">
                 <h2 className="font-bold text-lg">
                     {character.name.length > 17

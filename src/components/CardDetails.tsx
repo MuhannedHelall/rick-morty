@@ -15,7 +15,7 @@ function CardDetails({ character }: { character: ICharacter }) {
             <div className="text-center border-b py-2">
                 <img
                     src={character.image}
-                    alt="Character Image"
+                    alt="Character"
                     className="rounded-full mx-auto mb-5 w-52"
                 />
                 <h2 className="font-bold text-2xl">{character.name}</h2>

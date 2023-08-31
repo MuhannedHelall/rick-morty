@@ -22,7 +22,6 @@ function Main() {
         fetch(endPoint)
             .then((data) => data.json())
             .then((data) => setApi(data));
-        console.log(endPoint);
     }, [endPoint]);
 
     function handleEndPoint(s: string) {
