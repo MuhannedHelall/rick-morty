@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import IEpisode from "../utils/data/episode.interface";
 import { BsArrowRight } from "react-icons/bs";
 
@@ -12,9 +12,11 @@ function EpisodeItem({ episodeUrl }: { episodeUrl: string }) {
         url: "string",
         created: new Date(),
     });
-    fetch(episodeUrl)
-        .then((data) => data.json())
-        .then((res) => setEpisode(res));
+    useEffect(() => {
+        fetch(episodeUrl)
+            .then((data) => data.json())
+            .then((res) => setEpisode(res));
+    }, [episodeUrl]);
     return (
         <div className="my-2">
             <h4 className="text-sm flex items-center">
